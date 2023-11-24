@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "504402526185",
+    "firebase_url": "https://studywithme-47473-default-rtdb.firebaseio.com",
+    "project_id": "studywithme-47473",
+    "storage_bucket": "studywithme-47473.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504402526185:android:b320a7ef31a35e8edd9578",
+        "android_client_info": {
+          "package_name": "com.example.studywithme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXzW0iBTb7Db09yuyiUgShEJm4eijFZOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
