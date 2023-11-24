@@ -13,34 +13,6 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/login"
-            android:layout_width="130dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_background"
-            android:layout_marginTop="150dp"
-            android:text="로그인"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="153dp"
-            tools:layout_editor_absoluteY="170dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/join"
-            android:layout_width="130dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/btn_background"
-            android:text="회원가입"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="153dp"
-            tools:layout_editor_absoluteY="569dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/reservation"
             android:layout_width="130dp"
             android:layout_height="45dp"
