@@ -17,15 +17,15 @@
 
         <ImageView
             android:id="@+id/signup"
-            android:layout_width="206dp"
-            android:layout_height="63dp"
+            android:layout_width="222dp"
+            android:layout_height="77dp"
             android:layout_gravity="center"
             android:layout_marginTop="110dp"
             app:layout_constraintBottom_toTopOf="@+id/email_edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo"
+            app:srcCompat="@drawable/join"
             tools:ignore="ContentDescription" />
 
         <EditText
@@ -33,7 +33,7 @@
             android:layout_width="350dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/edit_background_gray"
             android:hint="  이름"
             android:inputType="textEmailAddress"

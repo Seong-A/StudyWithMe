@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/home"
+        android:title="홈화면" />
+    <item
+        android:id="@+id/find"
+        android:enabled="true"
+        android:icon="@drawable/find"
+        android:title="카페찾기" />
+    <item
+        android:id="@+id/info"
+        android:enabled="true"
+        android:icon="@drawable/info"
+        android:title="이용방법" />
+    <item
+        android:id="@+id/mypage"
+        android:enabled="true"
+        android:icon="@drawable/mypage"
+        android:title="마이페이지" />
+</menu>

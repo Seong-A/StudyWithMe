@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
@@ -29,6 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         FirebaseApp.initializeApp(this);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         emailEdit = findViewById(R.id.email);
         passwordEdit = findViewById(R.id.password);

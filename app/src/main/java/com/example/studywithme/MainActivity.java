@@ -1,5 +1,6 @@
 package com.example.studywithme;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         // 로그인 버튼
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,25 +36,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, JoinActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // 좌석 예약 버튼
-        findViewById(R.id.reservation).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                Toast.makeText(MainActivity.this, "로그인 후 이용 가능합니다!", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
-
-        // 이용 안내
-        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
                 startActivity(intent);
             }
         });

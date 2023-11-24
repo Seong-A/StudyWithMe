@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
@@ -35,6 +36,9 @@ public class JoinActivity extends AppCompatActivity {
 
         // FirebaseApp 초기화 추가
         FirebaseApp.initializeApp(this);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         nameEdit = findViewById(R.id.name_edit);
         emailEdit = findViewById(R.id.email_edit);

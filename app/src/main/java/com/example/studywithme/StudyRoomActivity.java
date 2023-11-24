@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -14,6 +15,10 @@ public class StudyRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studyroom);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
 
         // 1번 스터디룸
         AppCompatButton studyroom1Button = findViewById(R.id.studyroom1);
