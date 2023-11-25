@@ -25,7 +25,7 @@ public class StudyRoomActivity extends AppCompatActivity {
         studyroom1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StudyRoomActivity.this, ReservationActivity.class);
+                Intent intent = new Intent(StudyRoomActivity.this, ReservationActivity2.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +40,7 @@ public class StudyRoomActivity extends AppCompatActivity {
             }
         });
 
-        // 1번 스터디룸
+        // 3번 스터디룸
         AppCompatButton studyroom3Button = findViewById(R.id.studyroom3);
         studyroom3Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class StudyRoomActivity extends AppCompatActivity {
             }
         });
 
-        // 1번 스터디룸
+        // 4번 스터디룸
         AppCompatButton studyroom4Button = findViewById(R.id.studyroom4);
         studyroom4Button.setOnClickListener(new View.OnClickListener() {
             @Override
