@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyWithMe"
         tools:targetApi="31"
-        tools:replace="android:icon,android:theme,android:allowBackup">
+        tools:replace="android:icon,android:theme,android:allowBackup"
+        android:enableOnBackInvokedCallback="true">
 
         <activity
             android:name=".MainActivity"
@@ -45,6 +46,11 @@
         </activity>
 
         <activity
+            android:name=".FindActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
             android:name=".ReservationActivity"
             android:exported="true">
         </activity>
@@ -56,6 +62,31 @@
 
         <activity
             android:name=".ReservationActivityA1"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".CafeDetailActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ReservationActivity1"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ReservationActivity2"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ReservationActivity3"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ReservationActivity4"
             android:exported="true">
         </activity>
     </application>

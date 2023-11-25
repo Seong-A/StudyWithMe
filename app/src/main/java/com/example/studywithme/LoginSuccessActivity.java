@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -15,10 +14,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.studywithme.InfoActivity;
-import com.example.studywithme.JoinActivity;
-import com.example.studywithme.LoginActivity;
-import com.example.studywithme.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -81,6 +76,8 @@ public class LoginSuccessActivity extends AppCompatActivity {
                             case R.id.home:
                                 break;
                             case R.id.find:
+                                Intent findIntent = new Intent(LoginSuccessActivity.this, FindActivity.class);
+                                startActivity(findIntent);
                                 break;
                             case R.id.info:
                                 Intent infoIntent = new Intent(LoginSuccessActivity.this, InfoActivity.class);
