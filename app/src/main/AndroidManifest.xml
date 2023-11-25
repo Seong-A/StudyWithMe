@@ -55,7 +55,7 @@
         </activity>
 
         <activity
-            android:name=".ReservationActivity2"
+            android:name=".ReservationActivityA1"
             android:exported="true">
         </activity>
     </application>
