@@ -44,7 +44,7 @@
             android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/studyroom2"
+            android:id="@+id/cafe4_studyroom1"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -56,7 +56,7 @@
             android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/studyroom3"
+            android:id="@+id/cafe4_studyroom2"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -68,7 +68,7 @@
             android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/studyroom4"
+            android:id="@+id/cafe4_locker"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"

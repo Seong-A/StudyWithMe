@@ -27,5 +27,24 @@ public class ReservationActivity1 extends AppCompatActivity {
             }
         });
 
+        // 1번 스터디룸
+        findViewById(R.id.cafe1_studyroom1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReservationActivity1.this, ReservationActivityB.class);
+                intent.putExtra("cafeId", "cafe1");
+                startActivity(intent);
+            }
+        });
+
+        // 2번 스터디룸
+        findViewById(R.id.cafe1_studyroom2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReservationActivity1.this, ReservationActivityC.class);
+                intent.putExtra("cafeId", "cafe1");
+                startActivity(intent);
+            }
+        });
     }
 }
