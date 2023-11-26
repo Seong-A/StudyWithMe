@@ -89,6 +89,11 @@
             android:name=".ReservationActivity4"
             android:exported="true">
         </activity>
+
+        <activity
+            android:name=".ReservationActivityA"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

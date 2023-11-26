@@ -20,18 +20,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/logo"
-            android:layout_width="206dp"
-            android:layout_height="63dp"
+            android:id="@+id/cafe1_name"
+            android:layout_width="248dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/logo"
+            app:srcCompat="@drawable/cafe1_name"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:text="AA 스터디카페 예약 페이지입니다"
+            android:text="바른스터디카페 예약 페이지입니다"
             android:textColor="@color/black"/>
 
         <LinearLayout
@@ -65,71 +65,108 @@
             android:orientation="vertical"
             android:background="@drawable/btn_background2">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal" >
 
                 <ImageView
+                    android:id="@+id/nothing"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_x" />
 
                 <TextView
+                    android:id="@+id/text"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:textColor="@color/white"
+                    android:layout_toRightOf="@+id/nothing"
                     android:text=" " />
 
                 <TextView
+                    android:id="@+id/text1"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:textColor="@color/white"
+                    android:layout_toRightOf="@+id/text"
                     android:text=" " />
 
                 <ImageView
                     android:id="@+id/seat8"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_toRightOf="@+id/text1"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat8"
+                    android:layout_marginTop="-38dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="105dp"
+                    android:text="8"
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/seat9"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/seat8"
                     app:srcCompat="@drawable/seat_a" />
 
                 <TextView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:textColor="@color/white"
-                    android:text=" " />
+                    android:layout_below="@+id/seat8"
+                    android:layout_marginTop="-38dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="140dp"
+                    android:text="9"
+                    android:textSize="20dp" />
 
                 <TextView
+                    android:id="@+id/text2"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:textColor="@color/white"
+                    android:layout_toRightOf="@+id/seat9"
                     android:text=" " />
 
                 <TextView
+                    android:id="@+id/text3"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:textColor="@color/white"
+                    android:layout_toRightOf="@+id/text2"
                     android:text=" " />
 
                 <TextView
+                    android:id="@+id/text4"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:textColor="@color/white"
+                    android:layout_toRightOf="@+id/text3"
                     android:text=" " />
 
                 <TextView
+                    android:id="@+id/text5"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:textColor="@color/white"
+                    android:layout_toRightOf="@+id/text4"
                     android:text=" " />
-            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:textColor="@color/white"
+                    android:layout_toRightOf="@+id/text5"
+                    android:text=" " />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,6 +180,16 @@
                     android:layout_height="35dp"
                     android:rotation="270"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat7"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="7"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -183,6 +230,16 @@
                 <TextView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_below="@+id/seat9"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="27"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:textColor="@color/white"
                     android:text=" " />
 
@@ -192,11 +249,32 @@
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
 
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat9"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="28"
+                    android:textSize="20dp" />
+
                 <ImageView
                     android:id="@+id/seat29"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat9"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="29"
+                    android:textSize="20dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -211,6 +289,15 @@
                     android:layout_height="35dp"
                     android:rotation="270"
                     app:srcCompat="@drawable/seat_a" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat6"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="6"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -283,6 +370,16 @@
                 <TextView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_below="@+id/seat5"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="5"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:textColor="@color/white"
                     android:text=" " />
 
@@ -299,12 +396,32 @@
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
 
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat11"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="11"
+                    android:textSize="20dp" />
+
                 <ImageView
                     android:id="@+id/seat10"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat10"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="10"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -353,6 +470,16 @@
                 <TextView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_below="@+id/seat4"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="4"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:textColor="@color/white"
                     android:text=" " />
 
@@ -368,11 +495,31 @@
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
 
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat12"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="12"
+                    android:textSize="20dp" />
+
                 <ImageView
                     android:id="@+id/seat13"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat13"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="13"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -387,12 +534,32 @@
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
 
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat26"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="26"
+                    android:textSize="20dp" />
+
                 <ImageView
                     android:id="@+id/seat25"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat25"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="25"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -406,6 +573,16 @@
                     android:layout_height="35dp"
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat30"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="30"
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -420,6 +597,15 @@
                     android:layout_height="35dp"
                     android:rotation="270"
                     app:srcCompat="@drawable/seat_a" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat3"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="3"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -456,6 +642,16 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat24"
+                    android:layout_marginTop="-2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="24"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -541,6 +737,16 @@
                     android:layout_height="35dp"
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat30"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="31"
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -554,6 +760,16 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat2"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-36dp"
+                    android:text="2"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -574,12 +790,33 @@
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
 
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat15"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="15"
+                    android:textSize="20dp" />
+
+
                 <ImageView
                     android:id="@+id/seat14"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat14"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="14"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -659,6 +896,15 @@
                     android:layout_height="35dp"
                     android:rotation="270"
                     app:srcCompat="@drawable/seat_a" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat23"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="23"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -677,6 +923,16 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat32"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="32"
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -690,6 +946,16 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat2"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-36dp"
+                    android:text="1"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -710,12 +976,32 @@
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
 
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat16"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="16"
+                    android:textSize="20dp" />
+
                 <ImageView
                     android:id="@+id/seat17"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat17"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="17"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -729,6 +1015,16 @@
                     android:layout_height="35dp"
                     android:rotation="270"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat22"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="22"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -778,12 +1074,30 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+                <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/seat19"
+                android:layout_marginTop="-3dp"
+                android:gravity="center"
+                android:layout_marginLeft="-35dp"
+                android:text="19"
+                android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/seat18"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat18"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="18"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -801,6 +1115,16 @@
                 <TextView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:layout_below="@+id/seat21"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="21"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:textColor="@color/white"
                     android:text=" "/>
 
@@ -811,12 +1135,32 @@
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
 
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat34"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="34"
+                    android:textSize="20dp" />
+
                 <ImageView
                     android:id="@+id/seat33"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:rotation="180"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat33"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="33"
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -866,6 +1210,15 @@
                     android:layout_height="35dp"
                     android:rotation="270"
                     app:srcCompat="@drawable/seat_a" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat20"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-38dp"
+                    android:text="20"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="35dp"
@@ -878,12 +1231,32 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat35"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="35"
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/seat36"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     app:srcCompat="@drawable/seat_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/seat36"
+                    android:layout_marginTop="-3dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="-35dp"
+                    android:text="36"
+                    android:textSize="20dp" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -1,6 +1,8 @@
 package com.example.studywithme;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,5 +16,15 @@ public class ReservationActivity4 extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        // 메인홀
+        findViewById(R.id.cafe4_mainroom).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReservationActivity4.this, ReservationActivityA.class);
+                intent.putExtra("cafeId", "cafe4");
+                startActivity(intent);
+            }
+        });
     }
 }

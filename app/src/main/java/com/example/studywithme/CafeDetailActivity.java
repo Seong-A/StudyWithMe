@@ -50,7 +50,7 @@ public class CafeDetailActivity extends AppCompatActivity {
                         int cafeId = cafe.getId();
                         startReservationActivity("ReservationActivity" + cafeId);
                     } else {
-                        Toast.makeText(CafeDetailActivity.this, "Invalid cafe data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CafeDetailActivity.this, "유효하지 않은 카페 데이터입니다.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -94,7 +94,7 @@ public class CafeDetailActivity extends AppCompatActivity {
             startActivity(reservationIntent);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            Toast.makeText(CafeDetailActivity.this, "Error starting reservation activity", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CafeDetailActivity.this, "좌석 예약을 진행할 수 없습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 

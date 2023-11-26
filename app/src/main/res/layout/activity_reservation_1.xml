@@ -32,7 +32,7 @@
             tools:ignore="ContentDescription" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/studyroom1"
+            android:id="@+id/cafe1_mainroom"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -41,10 +41,10 @@
             android:text="바른스터디카페 메인홀"
             android:textColor="@color/black"
             android:textSize="22dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/studyroom2"
+            android:id="@+id/cafe1_studyroom1"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -56,7 +56,7 @@
             android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/studyroom3"
+            android:id="@+id/cafe1_studyroom2"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -68,7 +68,7 @@
             android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/studyroom4"
+            android:id="@+id/cafe1_locker"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
