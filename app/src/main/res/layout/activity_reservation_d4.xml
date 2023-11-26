@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/cafe4_name"
+            android:layout_width="233dp"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/cafe4_name"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="작심 스터디카페 예약 페이지입니다"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="70dp" >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/reserved_seat"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_background2"
+                android:textStyle="bold"
+                android:text="사용중" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/available_seat"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_background"
+                android:text="예약가능"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="@drawable/edit_background_gray">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat1"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat2"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="2" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat3"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="3" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat4"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="4" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat5"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="5" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat6"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="6" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat7"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="7" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat8"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat9"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="9" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat10"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="10" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat11"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="11" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat12"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="12" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat13"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="13" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat14"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="14" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat15"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="15" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat16"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat17"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="17" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat18"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="18" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat19"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="19" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat20"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="20" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat21"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="21" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat22"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="22" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat23"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="23" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat24"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat25"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="25" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat26"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="26" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat27"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="27" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat28"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="28" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat29"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="29" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat30"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="30" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat31"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="31" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat32"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="32" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat33"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="33" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat34"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="34" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat35"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="35" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat36"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="36" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat37"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="37" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat38"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="38" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat39"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="39" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/seat40"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/btn_background2"
+                    android:text="40" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

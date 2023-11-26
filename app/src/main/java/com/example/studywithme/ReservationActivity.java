@@ -10,7 +10,7 @@ public class ReservationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservation);
+        setContentView(R.layout.activity_reservation_a4);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();

@@ -46,5 +46,15 @@ public class ReservationActivity1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // 사물함
+        findViewById(R.id.cafe1_locker).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReservationActivity1.this, ReservationActivityD.class);
+                intent.putExtra("cafeId", "cafe1");
+                startActivity(intent);
+            }
+        });
     }
 }
