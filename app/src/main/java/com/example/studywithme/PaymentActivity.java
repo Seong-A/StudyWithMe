@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -63,6 +64,10 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String currentDateAndTime = getCurrentDateAndTime();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(new Date());
+                calendar.add(Calendar.HOUR, selectedTime);
+                String endUsingTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(calendar.getTime());
 
                 DatabaseReference paymentsRef = databaseReference.child("payments");
                 String paymentKey = paymentsRef.push().getKey();
@@ -72,7 +77,8 @@ public class PaymentActivity extends AppCompatActivity {
                         getIntent().getIntExtra("fee", 0),
                         currentDateAndTime,
                         selectedCardName,
-                        getIntent().getIntExtra("cafeId", 0)
+                        getIntent().getStringExtra("cafeId"),
+                        getUserEmail()
                 );
 
                 paymentsRef.child(paymentKey).setValue(payment);
@@ -84,6 +90,9 @@ public class PaymentActivity extends AppCompatActivity {
                 seatsRef.child("seatNumber").setValue(selectedSeatNum);
                 seatsRef.child("status").setValue("reserved");
                 seatsRef.child("reservationTime").setValue(currentDateAndTime);
+                seatsRef.child("endUsingTime").setValue(endUsingTime);
+
+                updateSeatStatusAndImage(cafeRef, selectedSeatNum, "reserved");
 
                 Intent successIntent = new Intent(PaymentActivity.this, PaymentSuccessActivity.class);
                 successIntent.putExtra("fee", getIntent().getIntExtra("fee", 0));
@@ -92,7 +101,6 @@ public class PaymentActivity extends AppCompatActivity {
                 startActivity(successIntent);
             }
         });
-
 
         Intent intent = getIntent();
         if (intent.hasExtra("selected_seat_num") && intent.hasExtra("selected_time") && intent.hasExtra("fee")) {
@@ -262,5 +270,31 @@ public class PaymentActivity extends AppCompatActivity {
         cardNameEditText.setText(cardName);
     }
 
+    private void updateSeatStatusAndImage(DatabaseReference cafeRef, int seatNumber, String status) {
+        DatabaseReference seatsRef = cafeRef.child("seats");
+        seatsRef.orderByChild("seatNumber").equalTo(seatNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot seatSnapshot : dataSnapshot.getChildren()) {
+                        seatSnapshot.getRef().child("status").setValue(status);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(PaymentActivity.this, "상태 및 이미지 업데이트 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private String getUserEmail() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+            return user.getEmail();
+        }
+        return "";
+    }
 
 }
