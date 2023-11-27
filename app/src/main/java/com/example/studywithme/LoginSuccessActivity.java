@@ -3,6 +3,8 @@ package com.example.studywithme;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -25,10 +27,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class LoginSuccessActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+    private ViewPager2 viewPager2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,15 @@ public class LoginSuccessActivity extends AppCompatActivity {
         // 사용자 이름
         TextView userTextView = findViewById(R.id.user);
 
+        // 배너
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(Fragment1.newInstance(0));
+        fragments.add(Fragment2.newInstance(1));
+
+        viewPager2 = findViewById(R.id.viewPager2_container);
+
+        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this, fragments);
+        viewPager2.setAdapter(viewPager2Adapter);
 
 
         // 좌석 예약 버튼
