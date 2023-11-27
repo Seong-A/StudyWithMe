@@ -61,11 +61,6 @@
         </activity>
 
         <activity
-            android:name=".ReservationActivityA1"
-            android:exported="true">
-        </activity>
-
-        <activity
             android:name=".CafeDetailActivity"
             android:exported="true">
         </activity>
@@ -107,6 +102,16 @@
 
         <activity
             android:name=".ReservationActivityD"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".PaymentSuccessActivity"
             android:exported="true">
         </activity>
     </application>

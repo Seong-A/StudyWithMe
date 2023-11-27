@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ReservationActivityA extends AppCompatActivity {
 
+    private int selectedSeatNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,17 @@ public class ReservationActivityA extends AppCompatActivity {
         for (int i = 1; i <= totalSeats; i++) {
             setSeatClickListener(i);
         }
+
+        // 예약 버튼 클릭 리스너 설정
+        View reservationButton = findViewById(R.id.reservation_btn);
+        reservationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reservationIntent = new Intent(ReservationActivityA.this, ReservationActivity.class);
+                reservationIntent.putExtra("selected_seat_num", selectedSeatNum);
+                startActivity(reservationIntent);
+            }
+        });
     }
 
     private void setSeatClickListener(int seatNum) {
@@ -59,10 +72,12 @@ public class ReservationActivityA extends AppCompatActivity {
         seatImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Show reservation button or perform other actions
+                seatImageView.setImageResource(R.drawable.seat_r);
                 View reservationButton = findViewById(R.id.reservation_btn);
                 reservationButton.setVisibility(View.VISIBLE);
                 Toast.makeText(ReservationActivityA.this, "좌석 " + seatNum + "을 선택하였습니다", Toast.LENGTH_SHORT).show();
+
+                selectedSeatNum = seatNum;
             }
         });
     }

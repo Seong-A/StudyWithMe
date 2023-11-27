@@ -24,7 +24,7 @@ public class StudyRoomActivity extends AppCompatActivity {
         studyroom1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StudyRoomActivity.this, ReservationActivityA1.class);
+                Intent intent = new Intent(StudyRoomActivity.this, ReservationActivity.class);
                 startActivity(intent);
             }
         });
