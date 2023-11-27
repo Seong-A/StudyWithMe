@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/hyundai"
+        android:title="현대카드"></item>
+
+    <item
+        android:id="@+id/shinhan"
+        android:title="신한카드"></item>
+
+    <item
+        android:id="@+id/kb"
+        android:title="KB국민카드"></item>
+
+    <item
+        android:id="@+id/lotte"
+        android:title="롯데카드"></item>
+
+    <item
+        android:id="@+id/nh"
+        android:title="NH 농협카드"></item>
+
+    <item
+        android:id="@+id/kakao"
+        android:title="카카오페이"></item>
+
+    <item
+        android:id="@+id/naver"
+        android:title="네이버페이"></item>
+
+</menu>
