@@ -44,8 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/blue"
-            android:textSize="25dp"
+            android:text="결제 내역"
+            android:textColor="@color/black"
+            android:textSize="23dp"
             android:textStyle="bold" />
 
         <View

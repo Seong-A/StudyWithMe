@@ -2,6 +2,7 @@ package com.example.studywithme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -12,13 +13,21 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ReservationActivityA extends AppCompatActivity {
 
     private int selectedSeatNum;
+    private ImageView lastSelectedSeat;
+    private String cafeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        String cafeId = intent.getStringExtra("cafeId");
+        cafeId = intent.getStringExtra("cafeId");
+
+        if (cafeId == null || cafeId.isEmpty()) {
+            Toast.makeText(this, "존재하지 않는 스터디카페입니다", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
         int layoutResourceId;
         int totalSeats;
@@ -45,6 +54,8 @@ public class ReservationActivityA extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        Log.d("DEBUG", "cafeId: " + cafeId);
+
         // 좌석 개수에 맞게 반복문을 통해 클릭 리스너 등록
         for (int i = 1; i <= totalSeats; i++) {
             setSeatClickListener(i);
@@ -57,6 +68,7 @@ public class ReservationActivityA extends AppCompatActivity {
             public void onClick(View v) {
                 Intent reservationIntent = new Intent(ReservationActivityA.this, ReservationActivity.class);
                 reservationIntent.putExtra("selected_seat_num", selectedSeatNum);
+                reservationIntent.putExtra("cafeId", cafeId);
                 startActivity(reservationIntent);
             }
         });
@@ -72,7 +84,12 @@ public class ReservationActivityA extends AppCompatActivity {
         seatImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (lastSelectedSeat != null) {
+                    lastSelectedSeat.setImageResource(R.drawable.seat_a);
+                }
                 seatImageView.setImageResource(R.drawable.seat_r);
+                lastSelectedSeat = seatImageView;
+
                 View reservationButton = findViewById(R.id.reservation_btn);
                 reservationButton.setVisibility(View.VISIBLE);
                 Toast.makeText(ReservationActivityA.this, "좌석 " + seatNum + "을 선택하였습니다", Toast.LENGTH_SHORT).show();

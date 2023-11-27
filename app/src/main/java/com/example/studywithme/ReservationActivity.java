@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -53,26 +54,28 @@ public class ReservationActivity extends AppCompatActivity {
         if (intent.hasExtra("selected_seat_num")) {
             selectedSeatNum = intent.getIntExtra("selected_seat_num", 0);
         }
+
         checkAndUpdateUserName(userTextView);
 
-        setClickListener(R.id.time_2h,2);
-        setClickListener(R.id.time_3h,3);
-        setClickListener(R.id.time_4h,4);
-        setClickListener(R.id.time_6h,6);
-        setClickListener(R.id.time_9h,9);
-        setClickListener(R.id.time_12h,12);
+        setClickListener(R.id.time_2h, 2);
+        setClickListener(R.id.time_3h, 3);
+        setClickListener(R.id.time_4h, 4);
+        setClickListener(R.id.time_6h, 6);
+        setClickListener(R.id.time_9h, 9);
+        setClickListener(R.id.time_12h, 12);
 
         // 결제버튼
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Calculate the fee based on the selected time
-                int fee = calculateFee(selectedTime);
+                int fee = calculateFee(selectedTime); // 요금
+                String cafeId = getCafeIdForSelectedSeat(); // 카페아이디
 
                 Intent paymentIntent = new Intent(ReservationActivity.this, PaymentActivity.class);
                 paymentIntent.putExtra("selected_seat_num", selectedSeatNum);
                 paymentIntent.putExtra("selected_time", selectedTime);
                 paymentIntent.putExtra("fee", fee);
+                paymentIntent.putExtra("cafeId", cafeId);
                 startActivity(paymentIntent);
             }
         });
@@ -168,4 +171,12 @@ public class ReservationActivity extends AppCompatActivity {
         }
     }
 
+    private String getCafeIdForSelectedSeat() {
+        Intent intent = getIntent();
+        if (intent.hasExtra("cafeId")) {
+            return intent.getStringExtra("cafeId");
+        } else {
+            return "";
+        }
+    }
 }

@@ -27,6 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class PaymentActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
@@ -45,7 +49,8 @@ public class PaymentActivity extends AppCompatActivity {
 
         TextView userTextView = findViewById(R.id.user_name);
         TextView timeTextView = findViewById(R.id.time);
-        TextView moneyTextView = findViewById(R.id.money);EditText payDateEditText = findViewById(R.id.editCardNumber);
+        TextView moneyTextView = findViewById(R.id.money);
+        EditText payDateEditText = findViewById(R.id.editCardNumber);
         EditText editExpDateEditText = findViewById(R.id.editExpDate);
         EditText editCVVEditText = findViewById(R.id.editCVV);
         AppCompatButton paymentButton = findViewById(R.id.payment_btn);
@@ -53,13 +58,41 @@ public class PaymentActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        // 결제버튼
         paymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String currentDateAndTime = getCurrentDateAndTime();
+
+                DatabaseReference paymentsRef = databaseReference.child("payments");
+                String paymentKey = paymentsRef.push().getKey();
+                Payment payment = new Payment(
+                        selectedSeatNum,
+                        selectedTime,
+                        getIntent().getIntExtra("fee", 0),
+                        currentDateAndTime,
+                        selectedCardName,
+                        getIntent().getIntExtra("cafeId", 0)
+                );
+
+                paymentsRef.child(paymentKey).setValue(payment);
+
+                String cafeId = getIntent().getStringExtra("cafeId");
+                DatabaseReference cafeRef = databaseReference.child("cafes").child(cafeId);
+
+                DatabaseReference seatsRef = cafeRef.child("seats").push();
+                seatsRef.child("seatNumber").setValue(selectedSeatNum);
+                seatsRef.child("status").setValue("reserved");
+                seatsRef.child("reservationTime").setValue(currentDateAndTime);
+
                 Intent successIntent = new Intent(PaymentActivity.this, PaymentSuccessActivity.class);
+                successIntent.putExtra("fee", getIntent().getIntExtra("fee", 0));
+                successIntent.putExtra("PAYMENT_DATE", currentDateAndTime);
+                successIntent.putExtra("CARD_NAME", selectedCardName);
                 startActivity(successIntent);
             }
         });
+
 
         Intent intent = getIntent();
         if (intent.hasExtra("selected_seat_num") && intent.hasExtra("selected_time") && intent.hasExtra("fee")) {
@@ -67,6 +100,7 @@ public class PaymentActivity extends AppCompatActivity {
             selectedTime = intent.getIntExtra("selected_time", 0);
             selectedCardName = intent.getStringExtra("CARD_NAME");
             int fee = intent.getIntExtra("fee", 0);
+            String cafeId = intent.getStringExtra("cafeId");
 
             String timeMessage = selectedTime + "시간권";
             timeTextView.setText(timeMessage);
@@ -192,6 +226,12 @@ public class PaymentActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    // 현재 날짜 / 시간
+    private String getCurrentDateAndTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return sdf.format(new Date());
     }
 
     private void updateMoneyTextView(TextView moneyTextView, int fee) {

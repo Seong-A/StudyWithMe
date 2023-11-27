@@ -2,13 +2,19 @@ package com.example.studywithme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +32,9 @@ public class MypageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -45,7 +54,6 @@ public class MypageActivity extends AppCompatActivity {
         findViewById(R.id.user_modify).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the ModifyUserInfoActivity
                 Intent intent = new Intent(MypageActivity.this, ModifyUserInfoActivity.class);
                 startActivity(intent);
             }
@@ -68,6 +76,35 @@ public class MypageActivity extends AppCompatActivity {
             }
         });
 
+        // navi bar
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.home:
+                                Intent homeIntent = new Intent(MypageActivity.this, LoginSuccessActivity.class);
+                                startActivity(homeIntent);
+                                break;
+                            case R.id.find:
+                                Intent findIntent = new Intent(MypageActivity.this, FindActivity.class);
+                                startActivity(findIntent);
+                                break;
+                            case R.id.info:
+                                Intent infoIntent = new Intent(MypageActivity.this, InfoActivity.class);
+                                startActivity(infoIntent);
+                                break;
+                            case R.id.mypage:
+                                Intent mypageIntent = new Intent(MypageActivity.this, MypageActivity.class);
+                                startActivity(mypageIntent);
+                                break;
+                        }
+                        return true;
+                    }
+                }
+        );
+
         checkAndUpdateUserName(userTextView);
     }
 
@@ -83,9 +120,16 @@ public class MypageActivity extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.child("name").getValue(String.class);
                         if (name != null) {
-                            String welcomeMessage =name;
-                            userTextView.setText(name);
-                            userTextView.setText(welcomeMessage);
+                            String welcomeMessage = name + " 님 환영합니다";
+
+                            SpannableString spannableString = new SpannableString(welcomeMessage);
+                            ForegroundColorSpan nameColor = new ForegroundColorSpan(getResources().getColor(R.color.blue));
+                            ForegroundColorSpan timeColor = new ForegroundColorSpan(getResources().getColor(R.color.black));
+
+                            spannableString.setSpan(nameColor, 0, name.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            spannableString.setSpan(timeColor, name.length(), welcomeMessage.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                            userTextView.setText(spannableString);
                         }
                     }
                 }

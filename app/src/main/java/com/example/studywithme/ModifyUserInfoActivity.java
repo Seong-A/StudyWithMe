@@ -2,6 +2,7 @@ package com.example.studywithme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,10 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +39,9 @@ public class ModifyUserInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_user);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -63,6 +69,34 @@ public class ModifyUserInfoActivity extends AppCompatActivity {
             }
         });
 
+        // navi bar
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.home:
+                                Intent homeIntent = new Intent(ModifyUserInfoActivity.this, LoginSuccessActivity.class);
+                                startActivity(homeIntent);
+                                break;
+                            case R.id.find:
+                                Intent findIntent = new Intent(ModifyUserInfoActivity.this, FindActivity.class);
+                                startActivity(findIntent);
+                                break;
+                            case R.id.info:
+                                Intent infoIntent = new Intent(ModifyUserInfoActivity.this, InfoActivity.class);
+                                startActivity(infoIntent);
+                                break;
+                            case R.id.mypage:
+                                Intent mypageIntent = new Intent(ModifyUserInfoActivity.this, MypageActivity.class);
+                                startActivity(mypageIntent);
+                                break;
+                        }
+                        return true;
+                    }
+                }
+        );
         checkAndUpdateUserInfo();
     }
 

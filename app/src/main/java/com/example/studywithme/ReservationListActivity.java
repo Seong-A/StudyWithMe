@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -28,7 +29,9 @@ public class ReservationListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_list);
 
-        // Firebase 데이터베이스 및 참조 초기화
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         reservationsRef = FirebaseDatabase.getInstance().getReference().child("rents");
         reservationListLayout = findViewById(R.id.reservationListLayout);
 
