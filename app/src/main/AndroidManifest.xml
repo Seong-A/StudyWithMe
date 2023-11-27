@@ -114,6 +114,22 @@
             android:name=".PaymentSuccessActivity"
             android:exported="true">
         </activity>
+
+        <activity
+            android:name=".ModifyUserInfoActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".MypageActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ReservationListActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>

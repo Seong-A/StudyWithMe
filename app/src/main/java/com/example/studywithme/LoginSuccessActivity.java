@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -84,6 +85,8 @@ public class LoginSuccessActivity extends AppCompatActivity {
                                 startActivity(infoIntent);
                                 break;
                             case R.id.mypage:
+                                Intent mypageIntent = new Intent(LoginSuccessActivity.this, MypageActivity.class);
+                                startActivity(mypageIntent);
                                 break;
                         }
                         return true;
