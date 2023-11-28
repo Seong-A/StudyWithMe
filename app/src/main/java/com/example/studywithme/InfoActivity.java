@@ -38,6 +38,8 @@ public class InfoActivity extends AppCompatActivity {
                             case R.id.info:
                                 break;
                             case R.id.mypage:
+                                Intent mypageIntent = new Intent(InfoActivity.this, MypageActivity.class);
+                                startActivity(mypageIntent);
                                 break;
                         }
                         return true;

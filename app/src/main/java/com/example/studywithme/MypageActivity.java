@@ -104,7 +104,7 @@ public class MypageActivity extends AppCompatActivity {
                     }
                 }
         );
-
+        
         checkAndUpdateUserName(userTextView);
     }
 

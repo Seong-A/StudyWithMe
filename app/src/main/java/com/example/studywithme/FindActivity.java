@@ -78,6 +78,8 @@ public class FindActivity extends AppCompatActivity {
                                 startActivity(infoIntent);
                                 break;
                             case R.id.mypage:
+                                Intent mypageIntent = new Intent(FindActivity.this, MypageActivity.class);
+                                startActivity(mypageIntent);
                                 break;
                         }
                         return true;

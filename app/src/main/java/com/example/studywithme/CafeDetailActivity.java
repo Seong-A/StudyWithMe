@@ -78,6 +78,8 @@ public class CafeDetailActivity extends AppCompatActivity {
                                 startActivity(infoIntent);
                                 break;
                             case R.id.mypage:
+                                Intent mypageIntent = new Intent(CafeDetailActivity.this, MypageActivity.class);
+                                startActivity(mypageIntent);
                                 break;
                         }
                         return true;
