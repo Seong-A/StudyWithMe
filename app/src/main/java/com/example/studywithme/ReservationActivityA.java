@@ -18,6 +18,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class ReservationActivityA extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
@@ -82,6 +87,39 @@ public class ReservationActivityA extends AppCompatActivity {
                 reservationIntent.putExtra("selected_seat_num", selectedSeatNum);
                 reservationIntent.putExtra("cafeId", cafeId);
                 startActivity(reservationIntent);
+            }
+        });
+
+        updateSeatStatusBasedOnTime();
+    }
+
+    private void updateSeatStatusBasedOnTime() {
+        DatabaseReference cafeRef = databaseReference.child("cafes").child(cafeId);
+        DatabaseReference seatsRef = cafeRef.child("seats");
+
+        seatsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot seatSnapshot : dataSnapshot.getChildren()) {
+                        String endUsingTime = seatSnapshot.child("endUsingTime").getValue(String.class);
+                        String status = seatSnapshot.child("status").getValue(String.class);
+
+                        if ("reserved".equals(status) && isEndUsingTimePassed(endUsingTime)) {
+                            seatSnapshot.getRef().child("status").setValue("available");
+
+                            ImageView seatImageView = getSeatImageView(seatSnapshot.child("seatNumber").getValue(Integer.class));
+                            if (seatImageView != null) {
+                                seatImageView.setImageResource(R.drawable.seat_a);
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ReservationActivityA.this, "자동 업데이트 실패", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -211,8 +249,18 @@ public class ReservationActivityA extends AppCompatActivity {
     }
 
     private boolean isEndUsingTimePassed(String endUsingTime) {
-        return System.currentTimeMillis() > Long.parseLong(endUsingTime);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
+            Date endDate = dateFormat.parse(endUsingTime);
+
+            // 시간 비교
+            return System.currentTimeMillis() > endDate.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
 
     private ImageView getSeatImageView(int seatNumber) {
         String seatIdName = "seat" + seatNumber;

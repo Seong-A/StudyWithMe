@@ -32,12 +32,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class PaymentActivity extends AppCompatActivity {
+public class PaymentActivity_room extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private int selectedSeatNum;
     private int selectedTime;
+    private int selectedId;
     private String selectedCardName;
 
     @Override
@@ -72,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
                 DatabaseReference paymentsRef = databaseReference.child("payments");
                 String paymentKey = paymentsRef.push().getKey();
                 Payment payment = new Payment(
-                        selectedSeatNum,
+                        selectedId,
                         selectedTime,
                         getIntent().getIntExtra("fee", 0),
                         currentDateAndTime,
@@ -86,15 +86,16 @@ public class PaymentActivity extends AppCompatActivity {
                 String cafeId = getIntent().getStringExtra("cafeId");
                 DatabaseReference cafeRef = databaseReference.child("cafes").child(cafeId);
 
-                DatabaseReference seatsRef = cafeRef.child("seats").push();
-                seatsRef.child("seatNumber").setValue(selectedSeatNum);
-                seatsRef.child("status").setValue("reserved");
-                seatsRef.child("reservationTime").setValue(currentDateAndTime);
-                seatsRef.child("endUsingTime").setValue(endUsingTime);
+                DatabaseReference studyRoomsRef = cafeRef.child("studyrooms");
+                DatabaseReference studyRoomReservationRef = studyRoomsRef.push();
+                studyRoomReservationRef.child("id").setValue(selectedId);
+                studyRoomReservationRef.child("status").setValue("reserved");
+                studyRoomReservationRef.child("reservationTime").setValue(currentDateAndTime);
+                studyRoomReservationRef.child("endUsingTime").setValue(endUsingTime);
 
-                updateSeatStatusAndImage(cafeRef, selectedSeatNum, "reserved");
+                updateSeatStatusAndImage(cafeRef, selectedId, "reserved");
 
-                Intent successIntent = new Intent(PaymentActivity.this, PaymentSuccessActivity.class);
+                Intent successIntent = new Intent(PaymentActivity_room.this, PaymentSuccessActivity.class);
                 successIntent.putExtra("fee", getIntent().getIntExtra("fee", 0));
                 successIntent.putExtra("PAYMENT_DATE", currentDateAndTime);
                 successIntent.putExtra("CARD_NAME", selectedCardName);
@@ -103,8 +104,8 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        if (intent.hasExtra("selected_seat_num") && intent.hasExtra("selected_time") && intent.hasExtra("fee")) {
-            selectedSeatNum = intent.getIntExtra("selected_seat_num", 0);
+        if (intent.hasExtra("id") && intent.hasExtra("selected_time") && intent.hasExtra("fee")) {
+            selectedId = intent.getIntExtra("id", 1);
             selectedTime = intent.getIntExtra("selected_time", 0);
             selectedCardName = intent.getStringExtra("CARD_NAME");
             int fee = intent.getIntExtra("fee", 0);
@@ -139,7 +140,6 @@ public class PaymentActivity extends AppCompatActivity {
                         formattedDate.append(input.charAt(i));
                     }
 
-                    // 텍스트 변경 시에는 다시 TextWatcher를 제거하여 무한 루프를 방지
                     payDateEditText.removeTextChangedListener(this);
                     payDateEditText.setText(formattedDate.toString());
                     payDateEditText.setSelection(formattedDate.length());
@@ -214,7 +214,7 @@ public class PaymentActivity extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.child("name").getValue(String.class);
                         if (name != null) {
-                            String welcomeMessage = name + " 님 - 좌석 " + selectedSeatNum;
+                            String welcomeMessage = name + " 님 - 스터디룸 " + selectedId;
 
                             SpannableString spannableString = new SpannableString(welcomeMessage);
                             ForegroundColorSpan nameColor = new ForegroundColorSpan(getResources().getColor(R.color.blue));
@@ -230,7 +230,7 @@ public class PaymentActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(PaymentActivity.this, "사용자 불러오기 실패ㅠㅠ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PaymentActivity_room.this, "사용자 불러오기 실패ㅠㅠ", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -255,7 +255,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 // 메뉴 아이템 클릭 시 처리할 로직 추가
-                Toast.makeText(PaymentActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivity_room.this, item.getTitle(), Toast.LENGTH_SHORT).show();
                 setCardName(item.getTitle().toString());
                 selectedCardName = item.getTitle().toString();
                 return true;
@@ -270,30 +270,25 @@ public class PaymentActivity extends AppCompatActivity {
         cardNameEditText.setText(cardName);
     }
 
-    private void updateSeatStatusAndImage(DatabaseReference cafeRef, int seatNumber, String status) {
-        DatabaseReference seatsRef = cafeRef.child("seats");
+    private void updateSeatStatusAndImage(DatabaseReference cafeRef, int id, String status) {
+        DatabaseReference studyRoomsRef = cafeRef.child("studyrooms");
 
-        seatsRef.orderByChild("seatNumber").equalTo(seatNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+        studyRoomsRef.orderByChild("id").equalTo(selectedId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    for (DataSnapshot seatSnapshot : dataSnapshot.getChildren()) {
-                        seatSnapshot.getRef().child("status").setValue(status);
+                    for (DataSnapshot studyRoomSnapshot : dataSnapshot.getChildren()) {
+                        studyRoomSnapshot.getRef().child("status").setValue(status);
                     }
-                } else {
-                    DatabaseReference newSeatRef = seatsRef.push();
-                    newSeatRef.child("seatNumber").setValue(seatNumber);
-                    newSeatRef.child("status").setValue(status);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(PaymentActivity.this, "Seat status update failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivity_room.this, "Study room status update failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
 
     private String getUserEmail() {
