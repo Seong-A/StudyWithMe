@@ -23,6 +23,7 @@
             android:id="@+id/cafe3_name"
             android:layout_width="262dp"
             android:layout_height="63dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/cafe3_name"
             tools:ignore="ContentDescription" />
@@ -30,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:text="어반트리 스터디카페 예약 페이지입니다"
             android:textColor="@color/black"/>
 
@@ -39,425 +40,806 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="70dp" >
+            android:layout_marginBottom="45dp" >
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ImageView
                 android:id="@+id/reserved_seat"
-                android:layout_width="75dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_background2"
-                android:textStyle="bold"
-                android:text="사용중" />
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+                app:srcCompat="@drawable/locker_r"
+                tools:layout_editor_absoluteX="219dp"
+                tools:layout_editor_absoluteY="88dp" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ImageView
                 android:id="@+id/available_seat"
-                android:layout_width="75dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_background"
-                android:text="예약가능"
-                android:textColor="@color/white"
-                android:textStyle="bold"/>
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+                app:srcCompat="@drawable/locker_a"
+                tools:layout_editor_absoluteX="153dp"
+                tools:layout_editor_absoluteY="88dp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_width="350dp"
+            android:layout_height="236dp"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:padding="5dp"
             android:background="@drawable/edit_background_gray">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal" >
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat1"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="1" />
+                <ImageView
+                    android:id="@+id/locker1"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat2"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="2" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker1"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:text="1"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat3"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="3" />
+                <ImageView
+                    android:id="@+id/locker2"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker1"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat4"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="4" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker2"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="44dp"
+                    android:text="2"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat5"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="5" />
+                <ImageView
+                    android:id="@+id/locker3"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker2"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat6"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="6" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker3"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="85dp"
+                    android:text="3"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat7"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="7" />
+                <ImageView
+                    android:id="@+id/locker4"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker3"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat8"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="8" />
-            </LinearLayout>
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker4"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="126dp"
+                    android:text="4"
+                    android:textSize="15dp" />
 
-            <LinearLayout
+                <ImageView
+                    android:id="@+id/locker5"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker4"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker5"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="167dp"
+                    android:text="5"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker6"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker5"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker6"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="208dp"
+                    android:text="6"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker7"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker6"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker7"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="249dp"
+                    android:text="7"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker8"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker7"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker8"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="290dp"
+                    android:text="8"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal" >
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat9"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="9" />
+                <ImageView
+                    android:id="@+id/locker9"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat10"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="10" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker9"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:text="9"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat11"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="11" />
+                <ImageView
+                    android:id="@+id/locker10"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker9"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat12"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="12" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker9"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="44dp"
+                    android:text="10"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat13"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="13" />
+                <ImageView
+                    android:id="@+id/locker11"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker10"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat14"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="14" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker11"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="85dp"
+                    android:text="11"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat15"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="15" />
+                <ImageView
+                    android:id="@+id/locker12"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker11"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat16"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="16" />
-            </LinearLayout>
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker12"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="126dp"
+                    android:text="12"
+                    android:textSize="15dp" />
 
-            <LinearLayout
+                <ImageView
+                    android:id="@+id/locker13"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker12"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker13"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="167dp"
+                    android:text="13"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker14"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker13"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker14"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="208dp"
+                    android:text="14"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker15"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker14"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker15"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="249dp"
+                    android:text="15"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker16"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker15"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker15"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="290dp"
+                    android:text="16"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal" >
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat17"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="17" />
+                <ImageView
+                    android:id="@+id/locker17"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat18"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="18" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker17"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:text="17"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat19"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="19" />
+                <ImageView
+                    android:id="@+id/locker18"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker17"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat20"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="20" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker18"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="44dp"
+                    android:text="18"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat21"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="21" />
+                <ImageView
+                    android:id="@+id/locker19"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker18"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat22"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="22" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker19"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="85dp"
+                    android:text="19"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat23"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="23" />
+                <ImageView
+                    android:id="@+id/locker20"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker19"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat24"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="24" />
-            </LinearLayout>
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker20"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="126dp"
+                    android:text="20"
+                    android:textSize="15dp" />
 
-            <LinearLayout
+                <ImageView
+                    android:id="@+id/locker21"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker20"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker21"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="167dp"
+                    android:text="21"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker22"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker21"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker22"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="208dp"
+                    android:text="22"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker23"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker22"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker23"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="249dp"
+                    android:text="23"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker24"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker23"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker24"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="290dp"
+                    android:text="24"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal" >
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat25"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="25" />
+                <ImageView
+                    android:id="@+id/locker25"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat26"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="26" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker25"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:text="25"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat27"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="27" />
+                <ImageView
+                    android:id="@+id/locker26"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker25"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat28"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="28" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker26"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="44dp"
+                    android:text="26"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat29"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="29" />
+                <ImageView
+                    android:id="@+id/locker27"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker26"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat30"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="30" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker27"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="85dp"
+                    android:text="27"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat31"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="31" />
+                <ImageView
+                    android:id="@+id/locker28"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker27"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat32"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="32" />
-            </LinearLayout>
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker28"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="126dp"
+                    android:text="28"
+                    android:textSize="15dp" />
 
-            <LinearLayout
+                <ImageView
+                    android:id="@+id/locker29"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker28"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker28"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="167dp"
+                    android:text="28"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker30"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker29"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker30"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="208dp"
+                    android:text="30"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker31"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker30"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker31"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="249dp"
+                    android:text="31"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker32"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker31"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker32"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="290dp"
+                    android:text="32"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal" >
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat33"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="33" />
+                <ImageView
+                    android:id="@+id/locker33"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat34"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="34" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker33"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:text="33"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat35"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="35" />
+                <ImageView
+                    android:id="@+id/locker34"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker33"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat36"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="36" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker34"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="44dp"
+                    android:text="34"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat37"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="37" />
+                <ImageView
+                    android:id="@+id/locker35"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker34"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat38"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="38" />
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker35"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="85dp"
+                    android:text="35"
+                    android:textSize="15dp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat39"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="39" />
+                <ImageView
+                    android:id="@+id/locker36"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker35"
+                    app:srcCompat="@drawable/locker_a" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/seat40"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/btn_background2"
-                    android:text="40" />
-            </LinearLayout>
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker36"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="126dp"
+                    android:text="36"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker37"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker36"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker37"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="167dp"
+                    android:text="37"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker38"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker37"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker38"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="208dp"
+                    android:text="38"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker39"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker38"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker39"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="249dp"
+                    android:text="39"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/locker40"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="3dp"
+                    android:layout_toRightOf="@+id/locker39"
+                    app:srcCompat="@drawable/locker_a" />
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/locker40"
+                    android:layout_marginTop="-32dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="290dp"
+                    android:text="40"
+                    android:textSize="15dp" />
+            </RelativeLayout>
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/reservation_btn"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="예약하기"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/btn_background" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
