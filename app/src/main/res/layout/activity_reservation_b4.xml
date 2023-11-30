@@ -43,19 +43,19 @@
 
             <ImageView
                 android:id="@+id/reserved_seat"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="3dp"
-                app:srcCompat="@drawable/locker_r"
+                app:srcCompat="@drawable/locker_r_text"
                 tools:layout_editor_absoluteX="219dp"
                 tools:layout_editor_absoluteY="88dp" />
 
             <ImageView
                 android:id="@+id/available_seat"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="3dp"
-                app:srcCompat="@drawable/locker_a"
+                app:srcCompat="@drawable/locker_a_text"
                 tools:layout_editor_absoluteX="153dp"
                 tools:layout_editor_absoluteY="88dp" />
         </LinearLayout>
