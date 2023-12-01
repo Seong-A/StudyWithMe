@@ -39,7 +39,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ViewPager2 mPager;
     private FragmentStateAdapter pagerAdapter;
-    private int num_page = 2;
+    private int num_page = 5;
     private CircleIndicator3 mIndicator;
 
     @Override
@@ -104,24 +104,6 @@ public class LoginSuccessActivity extends AppCompatActivity {
                 } else {
                     page.setTranslationY(myOffset);
                 }
-            }
-        });
-
-        // 좌석 예약 버튼
-        findViewById(R.id.reservation).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, StudyRoomActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // 이용 안내
-        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, InfoActivity.class);
-                startActivity(intent);
             }
         });
 

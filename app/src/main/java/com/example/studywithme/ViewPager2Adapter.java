@@ -19,7 +19,10 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
         int index = getRealPosition(position);
 
         if(index==0) return new Fragment1();
-        else return new Fragment2();
+        else if(index==1) return new Fragment2();
+        else if(index==2) return new Fragment3();
+        else if(index==3) return new Fragment4();
+        else return new Fragment5();
     }
 
     @Override

@@ -55,41 +55,21 @@
         <TextView
             android:id="@+id/user"
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/btn_background"
             android:gravity="center"
             android:textSize="22dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/info"
+        <ImageView
             android:layout_width="350dp"
-            android:layout_height="45dp"
+            android:layout_height="190dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/btn_background"
-            android:text="이용방법에 대해서 알아보아요"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/reservation"
-            android:layout_width="130dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/btn_background"
-            android:text="좌석 예약"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent" />
-
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/fee" />
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
