@@ -1,12 +1,14 @@
 package com.example.studywithme;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class Cafe implements Serializable {
     private int id;
     private String location;
     private String name;
     private String time;
+    private Map<String, Locker> lockers;
 
     public Cafe() {
     }
@@ -42,5 +44,11 @@ public class Cafe implements Serializable {
     }
     public void setTime(String time) {
         this.time = time;
+    }
+    public Map<String, Locker> getLockers() {
+        return lockers;
+    }
+    public void setLockers(Map<String, Locker> lockers) {
+        this.lockers = lockers;
     }
 }

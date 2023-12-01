@@ -32,11 +32,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class PaymentActivity extends AppCompatActivity {
+public class PaymentActivity_locker extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private int selectedSeatNum;
+    private int selectedLockerNum;
     private int selectedTime;
     private String selectedCardName;
 
@@ -72,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
                 DatabaseReference paymentsRef = databaseReference.child("payments");
                 String paymentKey = paymentsRef.push().getKey();
                 Payment payment = new Payment(
-                        selectedSeatNum,
+                        selectedLockerNum,
                         selectedTime,
                         getIntent().getIntExtra("fee", 0),
                         currentDateAndTime,
@@ -86,15 +86,15 @@ public class PaymentActivity extends AppCompatActivity {
                 String cafeId = getIntent().getStringExtra("cafeId");
                 DatabaseReference cafeRef = databaseReference.child("cafes").child(cafeId);
 
-                DatabaseReference seatsRef = cafeRef.child("seats").push();
-                seatsRef.child("seatNumber").setValue(selectedSeatNum);
-                seatsRef.child("status").setValue("reserved");
-                seatsRef.child("reservationTime").setValue(currentDateAndTime);
-                seatsRef.child("endUsingTime").setValue(endUsingTime);
+                DatabaseReference lockersRef = databaseReference.child("cafes").child(cafeId).child("lockers").push();
+                lockersRef.child("LockerNumber").setValue(selectedLockerNum);
+                lockersRef.child("status").setValue("reserved");
+                lockersRef.child("reservationTime").setValue(currentDateAndTime);
+                lockersRef.child("endUsingTime").setValue(endUsingTime);
 
-                updateSeatStatusAndImage(cafeRef, selectedSeatNum, "reserved");
+                updateLockerStatus(cafeRef, selectedLockerNum, "reserved");
 
-                Intent successIntent = new Intent(PaymentActivity.this, PaymentSuccessActivity.class);
+                Intent successIntent = new Intent(PaymentActivity_locker.this, PaymentSuccessActivity.class);
                 successIntent.putExtra("fee", getIntent().getIntExtra("fee", 0));
                 successIntent.putExtra("PAYMENT_DATE", currentDateAndTime);
                 successIntent.putExtra("CARD_NAME", selectedCardName);
@@ -103,8 +103,8 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        if (intent.hasExtra("selected_seat_num") && intent.hasExtra("selected_time") && intent.hasExtra("fee")) {
-            selectedSeatNum = intent.getIntExtra("selected_seat_num", 0);
+        if (intent.hasExtra("selected_locker_num") && intent.hasExtra("selected_time") && intent.hasExtra("fee")) {
+            selectedLockerNum = intent.getIntExtra("selected_locker_num", 0);
             selectedTime = intent.getIntExtra("selected_time", 0);
             selectedCardName = intent.getStringExtra("CARD_NAME");
             int fee = intent.getIntExtra("fee", 0);
@@ -129,7 +129,6 @@ public class PaymentActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 String input = editable.toString().replaceAll("-", "");
 
-                // 하이픈을 추가
                 if (input.length() > 0 && (input.length() % 4) == 0) {
                     StringBuilder formattedDate = new StringBuilder();
                     for (int i = 0; i < input.length(); i++) {
@@ -160,7 +159,6 @@ public class PaymentActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 String input = editable.toString().replaceAll("/", "");
 
-                // 슬래시를 추가
                 if (input.length() > 0 && (input.length() % 2) == 0) {
                     StringBuilder formattedDate = new StringBuilder();
                     for (int i = 0; i < input.length(); i++) {
@@ -212,7 +210,7 @@ public class PaymentActivity extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.child("name").getValue(String.class);
                         if (name != null) {
-                            String welcomeMessage = name + " 님 - 좌석 " + selectedSeatNum;
+                            String welcomeMessage = name + " 님 - 사물함 " + selectedLockerNum;
 
                             SpannableString spannableString = new SpannableString(welcomeMessage);
                             ForegroundColorSpan nameColor = new ForegroundColorSpan(getResources().getColor(R.color.blue));
@@ -228,7 +226,7 @@ public class PaymentActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(PaymentActivity.this, "사용자 불러오기 실패ㅠㅠ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PaymentActivity_locker.this, "사용자 불러오기 실패ㅠㅠ", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -253,7 +251,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 // 메뉴 아이템 클릭 시 처리할 로직 추가
-                Toast.makeText(PaymentActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivity_locker.this, item.getTitle(), Toast.LENGTH_SHORT).show();
                 setCardName(item.getTitle().toString());
                 selectedCardName = item.getTitle().toString();
                 return true;
@@ -268,26 +266,23 @@ public class PaymentActivity extends AppCompatActivity {
         cardNameEditText.setText(cardName);
     }
 
-    private void updateSeatStatusAndImage(DatabaseReference cafeRef, int seatNumber, String status) {
-        DatabaseReference seatsRef = cafeRef.child("seats");
+    private void updateLockerStatus(DatabaseReference cafeRef, int lockerNumber, String status) {
+        DatabaseReference lockersRef = cafeRef.child("lockers");
 
-        seatsRef.orderByChild("seatNumber").equalTo(seatNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+        lockersRef.orderByChild("lockerNumber").equalTo(lockerNumber).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    for (DataSnapshot seatSnapshot : dataSnapshot.getChildren()) {
-                        seatSnapshot.getRef().child("status").setValue(status);
+                    for (DataSnapshot lockerSnapshot : dataSnapshot.getChildren()) {
+                        lockerSnapshot.getRef().child("status").setValue(status);
                     }
                 } else {
-                    DatabaseReference newSeatRef = seatsRef.push();
-                    newSeatRef.child("seatNumber").setValue(seatNumber);
-                    newSeatRef.child("status").setValue(status);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(PaymentActivity.this, "Seat status update failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaymentActivity_locker.this, "사물함 상태 업데이트 실패", Toast.LENGTH_SHORT).show();
             }
         });
     }

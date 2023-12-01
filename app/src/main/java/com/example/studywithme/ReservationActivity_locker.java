@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,11 +25,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class ReservationActivity_room extends AppCompatActivity {
+public class ReservationActivity_locker extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private int selectedId;
+    private int selectedLockerNum;
     private int selectedTime;
     private TextView selectedTimeTextView;
     private HashMap<Integer, Integer> timeRates;
@@ -50,8 +51,8 @@ public class ReservationActivity_room extends AppCompatActivity {
         Button payButton = findViewById(R.id.pay_btn);
 
         Intent intent = getIntent();
-        if (intent.hasExtra("id")) {
-            selectedId = intent.getIntExtra("id", 0);
+        if (intent.hasExtra("selected_locker_num")) {
+            selectedLockerNum = intent.getIntExtra("selected_locker_num", 0);
         }
 
         checkAndUpdateUserName(userTextView);
@@ -70,8 +71,8 @@ public class ReservationActivity_room extends AppCompatActivity {
                 int fee = calculateFee(selectedTime); // 요금
                 String cafeId = getCafeIdForSelectedSeat(); // 카페아이디
 
-                Intent paymentIntent = new Intent(ReservationActivity_room.this, PaymentActivity_room.class);
-                paymentIntent.putExtra("id", selectedId);
+                Intent paymentIntent = new Intent(ReservationActivity_locker.this, PaymentActivity_locker.class);
+                paymentIntent.putExtra("selected_locker_num", selectedLockerNum);
                 paymentIntent.putExtra("selected_time", selectedTime);
                 paymentIntent.putExtra("fee", fee);
                 paymentIntent.putExtra("cafeId", cafeId);
@@ -94,7 +95,7 @@ public class ReservationActivity_room extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.child("name").getValue(String.class);
                         if (name != null) {
-                            String welcomeMessage = name + " 님 - 스터디룸 " + selectedId;
+                            String welcomeMessage = name + " 님 - 사물함 " + selectedLockerNum;
 
                             SpannableString spannableString = new SpannableString(welcomeMessage);
                             ForegroundColorSpan nameColor = new ForegroundColorSpan(getResources().getColor(R.color.blue));
@@ -110,7 +111,7 @@ public class ReservationActivity_room extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(ReservationActivity_room.this, "사용자 불러오기 실패ㅠㅠ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReservationActivity_locker.this, "사용자 불러오기 실패ㅠㅠ", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -179,4 +180,3 @@ public class ReservationActivity_room extends AppCompatActivity {
         }
     }
 }
-

@@ -139,6 +139,16 @@
             android:name=".PaymentActivity_room"
             android:exported="true">
         </activity>
+
+        <activity
+            android:name=".PaymentActivity_locker"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ReservationActivity_locker"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
