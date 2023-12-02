@@ -21,7 +21,9 @@
             android:layout_height="70dp"
             android:layout_margin="14dp"
             app:srcCompat="@drawable/logo" />
+
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -35,18 +37,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/reservation_list"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            android:background="@color/white"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/bottom_nav_item_color"
+            app:itemTextColor="@color/bottom_nav_item_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/listview" />
+
         <LinearLayout
             android:id="@+id/reservationListLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginTop="120dp"
-            android:padding="10dp"
             android:background="@drawable/btn_background2"
             android:gravity="center"
-            android:textSize="25dp"
             android:orientation="vertical"
+            android:padding="10dp"
+            android:textSize="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

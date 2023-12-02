@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ReservationListActivity extends AppCompatActivity {
-    private DatabaseReference reservationsRef;
+    private DatabaseReference paymentsRef;
     private LinearLayout reservationListLayout;
 
     @Override
@@ -32,10 +35,32 @@ public class ReservationListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        reservationsRef = FirebaseDatabase.getInstance().getReference().child("rents");
+        paymentsRef = FirebaseDatabase.getInstance().getReference().child("payments");
         reservationListLayout = findViewById(R.id.reservationListLayout);
 
-        // 로고
+        // Bottom Navigation View
+        BottomNavigationView bottomNavigationView = findViewById(R.id.reservation_list);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.mainroom:
+                                fetchAndDisplayData("mainroom");
+                                return true;
+                            case R.id.studyroom:
+                                fetchAndDisplayData("studyroom");
+                                return true;
+                            case R.id.locker:
+                                fetchAndDisplayData("locker");
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+
+        // Logo
         findViewById(R.id.logo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,48 +69,112 @@ public class ReservationListActivity extends AppCompatActivity {
             }
         });
 
-        getDataFromFirebase();
+        fetchAndDisplayData("mainroom");
     }
 
-    // 데이터베이스에서 데이터 가져오기
-    private void getDataFromFirebase() {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
 
-        if (user != null) {
-            // 해당 사용자의 주행내역 가져오기
-            String userEmail = user.getEmail();
+    private void fetchAndDisplayData(String itemType) {
+        reservationListLayout.removeAllViews();
 
-            reservationsRef.orderByChild("email").equalTo(userEmail).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int reservationCount = (int) snapshot.getChildrenCount();
-
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        Reservation reservation = dataSnapshot.getValue(Reservation.class);
-                        if (reservation != null) {
-                            String date = reservation.getDate();
-                            String time = reservation.getTime();
-                            String fee = reservation.getFee();
-
-                            addReservationTextView(date, time, fee);
+        paymentsRef.orderByChild("userEmail").equalTo(getCurrentUserEmail())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            // Handle data based on the selected item type
+                            switch (itemType) {
+                                case "mainroom":
+                                    displayMainRoomData(snapshot);
+                                    break;
+                                case "studyroom":
+                                    displayStudyRoomData(snapshot);
+                                    break;
+                                case "locker":
+                                    displayLockerData(snapshot);
+                                    break;
+                            }
                         }
                     }
 
-                    // 동적으로 계산된 높이를 reservationListLayout에 설정
-                    setReservationListLayoutHeight(reservationCount);
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle error
+                    }
+                });
+    }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // 데이터 가져오기에 실패한 경우 처리
-                }
-            });
+    private void displayMainRoomData(DataSnapshot snapshot) {
+        if (snapshot.exists() && snapshot.child("cafeId").getValue() != null
+                && snapshot.child("seatNum").getValue() != null
+                && snapshot.child("paymentDate").getValue() != null
+                && snapshot.child("cardName").getValue() != null
+                && snapshot.child("fee").getValue() != null) {
+
+            String cafeId = snapshot.child("cafeId").getValue(String.class);
+            Integer seatNum = snapshot.child("seatNum").getValue(Integer.class);
+            String paymentDate = snapshot.child("paymentDate").getValue(String.class);
+            String cardName = snapshot.child("cardName").getValue(String.class);
+            Integer fee = snapshot.child("fee").getValue(Integer.class);
+
+            if (cafeId != null && seatNum != null && paymentDate != null && cardName != null && fee != null) {
+                LinearLayout newReservationLayout = createTextView(cafeId, seatNum, paymentDate, cardName, fee);
+                reservationListLayout.addView(newReservationLayout);
+            } else {
+
+            }
+        } else {
+
         }
     }
 
-    // 대여기록
-    private void addReservationTextView(String date, String time, String fee) {
+
+
+    private void displayStudyRoomData(DataSnapshot snapshot) {
+        if (snapshot.exists() && snapshot.child("cafeId").getValue() != null
+                && snapshot.child("id").getValue() != null
+                && snapshot.child("paymentDate").getValue() != null
+                && snapshot.child("cardName").getValue() != null
+                && snapshot.child("fee").getValue() != null) {
+
+            String cafeId = snapshot.child("cafeId").getValue(String.class);
+            Integer id = snapshot.child("id").getValue(Integer.class);
+            String paymentDate = snapshot.child("paymentDate").getValue(String.class);
+            String cardName = snapshot.child("cardName").getValue(String.class);
+            Integer fee = snapshot.child("fee").getValue(Integer.class);
+
+            if (cafeId != null && id != null && paymentDate != null && cardName != null && fee != null) {
+                LinearLayout newReservationLayout = createTextView(cafeId, id, paymentDate, cardName, fee);
+                reservationListLayout.addView(newReservationLayout);
+            } else {
+            }
+        } else {
+        }
+    }
+
+    private void displayLockerData(DataSnapshot snapshot) {
+        if (snapshot.exists() && snapshot.child("cafeId").getValue() != null
+                && snapshot.child("lockerNumber").getValue() != null
+                && snapshot.child("paymentDate").getValue() != null
+                && snapshot.child("cardName").getValue() != null
+                && snapshot.child("fee").getValue() != null) {
+
+            String cafeId = snapshot.child("cafeId").getValue(String.class);
+            Integer lockerNumber = snapshot.child("lockerNumber").getValue(Integer.class);
+            String paymentDate = snapshot.child("paymentDate").getValue(String.class);
+            String cardName = snapshot.child("cardName").getValue(String.class);
+            Integer fee = snapshot.child("fee").getValue(Integer.class);
+
+            if (cafeId != null && lockerNumber != null && paymentDate != null && cardName != null && fee != null) {
+                LinearLayout newReservationLayout = createTextView(cafeId, lockerNumber, paymentDate, cardName, fee);
+                reservationListLayout.addView(newReservationLayout);
+            } else {
+            }
+        } else {
+        }
+    }
+
+
+    private LinearLayout createTextView(String cafeId, int detail, String paymentDate, String cardName, int fee) {
         // 각 대여 기록을 위한 새 LinearLayout 생성
         LinearLayout newReservationLayout = new LinearLayout(this);
         newReservationLayout.setLayoutParams(new LinearLayout.LayoutParams(
@@ -96,45 +185,50 @@ public class ReservationListActivity extends AppCompatActivity {
         newReservationLayout.setBackgroundResource(R.drawable.edit_background_bluewhite);
         newReservationLayout.setGravity(Gravity.CENTER);
 
-        // 날짜, 시간 및 요금에 대한 TextView 생성
-        TextView dateTextView = new TextView(this);
-        dateTextView.setText("이용날짜 : " + date);
-        dateTextView.setTextSize(18);
-        dateTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
-        dateTextView.setTypeface(null, Typeface.BOLD);
-        dateTextView.setPadding(50, 20, 10, 20);
+        // CafeId에 따라 원하는 문자열 생성
+        String cafeName;
+        switch (cafeId) {
+            case "cafe1":
+                cafeName = "바른스터디카페";
+                break;
+            case "cafe2":
+                cafeName = "비허밍 스터디카페";
+                break;
+            case "cafe3":
+                cafeName = "어반트리스터디카페";
+                break;
+            case "cafe4":
+                cafeName = "작심스터디카페";
+                break;
+            default:
+                cafeName = "...";
+                break;
+        }
 
-        TextView timeTextView = new TextView(this);
-        timeTextView.setText("이용시간 : " + time);
-        timeTextView.setTextSize(15);
-        timeTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
-        timeTextView.setPadding(50, 20, 10, 20);
+        TextView textView = new TextView(this);
+        textView.setText(String.format("%s: %d 번\n결제날짜: %s\n카드이름: %s\n요금: %d 원", cafeName, detail, paymentDate, cardName, fee));
+        textView.setTextColor(ContextCompat.getColor(this, R.color.black));
+        textView.setTextSize(16);
+        textView.setTypeface(null, Typeface.BOLD);
+        textView.setGravity(Gravity.CENTER_VERTICAL);
+        textView.setPadding(50, 20, 0 , 20);
 
-        TextView feeTextView = new TextView(this);
-        feeTextView.setText("이용요금 : " + fee);
-        feeTextView.setTextSize(15);
-        feeTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
-        feeTextView.setPadding(50, 20, 10, 20);
-
-        newReservationLayout.addView(dateTextView);
-        newReservationLayout.addView(timeTextView);
-        newReservationLayout.addView(feeTextView);
-
-        // 새 LinearLayout을 rentListLayout에 추가
-        reservationListLayout.addView(newReservationLayout);
+        newReservationLayout.addView(textView);
 
         // 대여 기록 간의 여백 추가
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) newReservationLayout.getLayoutParams();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
         layoutParams.setMargins(30, 30, 30, 20);
         newReservationLayout.setLayoutParams(layoutParams);
+
+        return newReservationLayout;
     }
 
 
-    private void setReservationListLayoutHeight(int reservationCount) {
-        // 최소한의 높이 설정
-        int minHeight = 400;
-        int calculatedHeight = minHeight + (reservationCount - 1) * 150;
-        reservationListLayout.setMinimumHeight(calculatedHeight);
+    private String getCurrentUserEmail() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        return user != null ? user.getEmail() : "";
     }
-
 }

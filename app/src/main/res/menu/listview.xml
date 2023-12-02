@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainroom"
+        android:enabled="true"
+        android:icon="@drawable/mainhall"
+        android:title="메인홀" />
+    <item
+        android:id="@+id/studyroom"
+        android:enabled="true"
+        android:icon="@drawable/studyroom"
+        android:title="스터디룸" />
+    <item
+        android:id="@+id/locker"
+        android:enabled="true"
+        android:icon="@drawable/locker"
+        android:title="사물함" />
+</menu>
