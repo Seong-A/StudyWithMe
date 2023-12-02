@@ -154,8 +154,10 @@ public class ReservationActivity_locker extends AppCompatActivity {
         });
     }
 
-
     private void updateMoneyTextView(TextView moneyTextView, int selectedTime) {
+        int fee = calculateFee(selectedTime);
+        String moneyMessage = "요금: " + fee + "원";
+        moneyTextView.setText(moneyMessage);
     }
 
     private int calculateFee(int selectedTime) {

@@ -39,6 +39,7 @@ public class PaymentActivity_locker extends AppCompatActivity {
     private int selectedLockerNum;
     private int selectedTime;
     private String selectedCardName;
+    private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class PaymentActivity_locker extends AppCompatActivity {
 
                 DatabaseReference paymentsRef = databaseReference.child("payments");
                 String paymentKey = paymentsRef.push().getKey();
-                Payment payment = new Payment(
+                Payment_locker payment = new Payment_locker(
                         selectedLockerNum,
                         selectedTime,
                         getIntent().getIntExtra("fee", 0),
@@ -91,6 +92,7 @@ public class PaymentActivity_locker extends AppCompatActivity {
                 lockersRef.child("status").setValue("reserved");
                 lockersRef.child("reservationTime").setValue(currentDateAndTime);
                 lockersRef.child("endUsingTime").setValue(endUsingTime);
+                lockersRef.child("userEmail").setValue(userEmail);
 
                 updateLockerStatus(cafeRef, selectedLockerNum, "reserved");
 
@@ -196,6 +198,7 @@ public class PaymentActivity_locker extends AppCompatActivity {
         });
 
         checkAndUpdateUserName(userTextView);
+        userEmail = getUserEmail();
     }
 
     // 사용자 이름 불러오기

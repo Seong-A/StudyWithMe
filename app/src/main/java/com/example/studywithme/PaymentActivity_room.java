@@ -39,6 +39,7 @@ public class PaymentActivity_room extends AppCompatActivity {
     private int selectedTime;
     private int selectedId;
     private String selectedCardName;
+    private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class PaymentActivity_room extends AppCompatActivity {
 
                 DatabaseReference paymentsRef = databaseReference.child("payments");
                 String paymentKey = paymentsRef.push().getKey();
-                Payment payment = new Payment(
+                Payment_room payment = new Payment_room(
                         selectedId,
                         selectedTime,
                         getIntent().getIntExtra("fee", 0),
@@ -92,6 +93,7 @@ public class PaymentActivity_room extends AppCompatActivity {
                 studyRoomReservationRef.child("status").setValue("reserved");
                 studyRoomReservationRef.child("reservationTime").setValue(currentDateAndTime);
                 studyRoomReservationRef.child("endUsingTime").setValue(endUsingTime);
+                studyRoomReservationRef.child("userEmail").setValue(userEmail);
 
                 updateSeatStatusAndImage(cafeRef, selectedId, "reserved");
 
@@ -200,6 +202,7 @@ public class PaymentActivity_room extends AppCompatActivity {
         });
 
         checkAndUpdateUserName(userTextView);
+        userEmail = getUserEmail();
     }
 
     // 사용자 이름 불러오기

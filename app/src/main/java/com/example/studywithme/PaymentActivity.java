@@ -39,6 +39,7 @@ public class PaymentActivity extends AppCompatActivity {
     private int selectedSeatNum;
     private int selectedTime;
     private String selectedCardName;
+    private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,7 @@ public class PaymentActivity extends AppCompatActivity {
                 seatsRef.child("status").setValue("reserved");
                 seatsRef.child("reservationTime").setValue(currentDateAndTime);
                 seatsRef.child("endUsingTime").setValue(endUsingTime);
+                seatsRef.child("userEmail").setValue(userEmail);
 
                 updateSeatStatusAndImage(cafeRef, selectedSeatNum, "reserved");
 
@@ -198,6 +200,7 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
         checkAndUpdateUserName(userTextView);
+        userEmail = getUserEmail();
     }
 
     // 사용자 이름 불러오기
