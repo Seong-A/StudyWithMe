@@ -89,14 +89,13 @@ public class ModifyUserInfoActivity extends AppCompatActivity {
                                 startActivity(infoIntent);
                                 break;
                             case R.id.mypage:
-                                Intent mypageIntent = new Intent(ModifyUserInfoActivity.this, MypageActivity.class);
-                                startActivity(mypageIntent);
                                 break;
                         }
                         return true;
                     }
                 }
         );
+        bottomNavigationView.setSelectedItemId(R.id.mypage);
         checkAndUpdateUserInfo();
     }
 

@@ -149,7 +149,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         String name = dataSnapshot.child("name").getValue(String.class);
                         if (name != null) {
-                            String welcomeMessage = name + " 님" + "\n자리이동 " + " | " + " 자리연장" ;
+                            String welcomeMessage = name + " 님" + "\n환영합니다!" ;
 
                             SpannableString spannableString = new SpannableString(welcomeMessage);
                             ForegroundColorSpan nameColor = new ForegroundColorSpan(getResources().getColor(R.color.white));

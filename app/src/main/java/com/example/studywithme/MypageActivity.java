@@ -96,15 +96,13 @@ public class MypageActivity extends AppCompatActivity {
                                 startActivity(infoIntent);
                                 break;
                             case R.id.mypage:
-                                Intent mypageIntent = new Intent(MypageActivity.this, MypageActivity.class);
-                                startActivity(mypageIntent);
                                 break;
                         }
                         return true;
                     }
                 }
         );
-        
+        bottomNavigationView.setSelectedItemId(R.id.mypage);
         checkAndUpdateUserName(userTextView);
     }
 

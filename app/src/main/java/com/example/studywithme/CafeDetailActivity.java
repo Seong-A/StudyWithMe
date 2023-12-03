@@ -70,8 +70,6 @@ public class CafeDetailActivity extends AppCompatActivity {
                                 startActivity(homeIntent);
                                 break;
                             case R.id.find:
-                                Intent findIntent = new Intent(CafeDetailActivity.this, FindActivity.class);
-                                startActivity(findIntent);
                                 break;
                             case R.id.info:
                                 Intent infoIntent = new Intent(CafeDetailActivity.this, InfoActivity.class);
@@ -86,6 +84,8 @@ public class CafeDetailActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        bottomNavigationView.setSelectedItemId(R.id.find);
     }
 
     private void startReservationActivity(String activityName) {
