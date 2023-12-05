@@ -25,3 +25,11 @@
 | UseList_Mainhall       | UseList_studyroom            | UseList_Locker            |
 |-------------------------|-------------------------|-------------------------|
 | <img width="215" alt="image" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/b0df07a2-3adf-4108-99b6-9a53e6f30762"> | <img width="216" alt="image" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/c05cc8eb-5538-466e-b79b-5ace32793bad"> | <img width="216" alt="image" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/07b3c57a-0097-4dbf-b812-ef3b60d91b3a"> |
+
+## Contributors
+
+[<img width="150" alt="Contributor 1" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/b8b055c2-4823-44dd-a90b-9599513f4797">](https://github.com/Seong-A)
+[<img width="150" alt="Contributor 3"src="https://github.com/Seong-A/StudyWithMe/assets/83965377/2c0123e5-b4d7-407d-9155-cb83fb9c2be6">](https://github.com/grace612)
+
+
+
