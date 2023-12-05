@@ -2,6 +2,23 @@
 
 ### 스터디카페 예약 관리 어플리케이션 (Study Cafe Reservation Management Application)
 
+## Project
+- Develop Period ( 2023.11 ~ 2012.12 )
+- Contributors ( 2 people )
+- Configuration Management ( Github )
+
+## Development Environment
+- Android Studio 7.3 ( minSDK 24, targetSDK 34 )
+- AVD ( Pixel 4 )
+- Database ( Firebase )
+
+## WorkPlan
+- Selection Topic ( 2023.11.21 )
+- UI / UX Design , Program Plan ( ~ 2023.11.25 )
+- Database Design ( ~ 2023.11.28 )
+- Test ( ~ 2023.12.05 )
+
+## Running Screen
 | Intro             | Login             | Main            |
 |-------------------------|-------------------------|-------------------------|
 | <img width="215" alt="image" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/97bdefe2-ad29-419d-8915-fb607a5fc654"> | <img width="215" alt="image" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/5344b965-f67e-47d2-8d59-0f1c5efa441d"> | <img width="216" alt="image" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/50b7c189-04db-49ab-8896-3c1f976cb2d7"> |
