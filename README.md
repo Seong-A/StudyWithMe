@@ -29,7 +29,7 @@
 ## Contributors
 
 [<img width="150" alt="Contributor 1" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/b8b055c2-4823-44dd-a90b-9599513f4797">](https://github.com/Seong-A)
-[<img width="150" alt="Contributor 3"src="https://github.com/Seong-A/StudyWithMe/assets/83965377/2c0123e5-b4d7-407d-9155-cb83fb9c2be6">](https://github.com/grace612)
+[<img width="150" alt="Contributor 2" src="https://github.com/Seong-A/StudyWithMe/assets/83965377/2c0123e5-b4d7-407d-9155-cb83fb9c2be6">](https://github.com/grace612)
 
 
 
