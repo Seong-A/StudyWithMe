@@ -3,7 +3,7 @@
 ### 스터디카페 예약 관리 어플리케이션 (Study Cafe Reservation Management Application)
 
 ## Project
-- Develop Period ( 2023.11 ~ 2012.12 )
+- Develop Period ( 2023.11 ~ 2023.12 )
 - Contributors ( 2 people )
 - Configuration Management ( Github )
 
